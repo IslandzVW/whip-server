@@ -1,7 +1,7 @@
 # whip-server
 #### The InWorldz WHIP distributed asset server
 
-WHIPs goals are fairly straightforward. It is not intended to compete with or be a replacement for the very robust distributed databases and key/value stores available today, but it served us very well for 5 years in the storage of immutable assets in the following respects:
+WHIPs goals are fairly straightforward. It is not intended to compete with or be a replacement for the very robust distributed databases and key/value stores available today, but it served us very well for 5 years for the storage of immutable assets in the following respects:
 
 * Provides cheap RF=1 storage once a peer server has been filled
 * Allows for a primary with replica nodes to protect the active writeable server(s) from data loss
