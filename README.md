@@ -11,6 +11,9 @@ WHIPs goals are fairly straightforward. It is not intended to compete with or be
 * Allows for the easy pruning of temporary assets used for avatar appearance without shuffling them between simulators
 * Allows for online adding of new nodes to increase total storage space.
 
+WHIP has been extensively tested on windows with very little runtime on linux.
+There may be bugs in the posix implementation that need fixing.
+
 #### Things WHIP doesn't do
 * WHIP is a storage layer and doesn't include any deduplication by default.
 
