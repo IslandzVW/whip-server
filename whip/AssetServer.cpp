@@ -86,25 +86,24 @@ IAsyncStorageBackend::ptr AssetServer::selectStorageBackend(const std::string& b
 {
 	IAsyncStorageBackend::ptr backend;
 
-	if (backendName == "vfs") {
+	if (boost::to_lower_copy(backendName) == "vfs") {
 		boost::shared_ptr<iwvfs::VFSBackend> vfs(new iwvfs::VFSBackend(storageRoot, enablePurge, _ioService, _pushReplicationSvc));
 
 		_index = vfs->getIndex();
 
 		backend = vfs;
-
-	} else if (backendName == "file") {	
-		throw std::runtime_error("The file backend is deprecated");
-		
-	}
+		return backend;
+	} 
 	
-	return backend;
+	throw std::runtime_error("disk_storage_backend must be vfs");
 }
 
 void AssetServer::configureStorage()
 {
 	bool cachingEnabled = whip::Settings::instance().get("cache_enabled").as<bool>();
 	std::string diskStorageRoot = whip::Settings::instance().get("disk_storage_root").as<std::string>();
+	if (diskStorageRoot.empty()) throw std::runtime_error("disk_storage_root must be specified");
+
 	bool purgeEnabled = whip::Settings::instance().get("allow_purge").as<bool>();
 	std::string diskStorageBackend = whip::Settings::instance().get("disk_storage_backend").as<std::string>();
 	std::string migration = whip::Settings::instance().get("migration").as<std::string>();
