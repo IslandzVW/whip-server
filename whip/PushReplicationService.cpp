@@ -15,6 +15,12 @@ PushReplicationService::PushReplicationService()
 
 PushReplicationService::~PushReplicationService()
 {
+	//dtor means we should already be stopped, but in the
+	//case of a startup exception, this isn't true
+	if (! _stop)
+	{
+		this->stop();
+	}
 }
 
 void PushReplicationService::start()
