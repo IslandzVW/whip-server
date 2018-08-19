@@ -1,3 +1,9 @@
+### NOTE:
+This project has been moved to the independent Halcyon simulator project under:
+* https://github.com/HalcyonGrid/whip-server
+
+___________
+
 # whip-server
 #### The InWorldz WHIP distributed asset server
 
